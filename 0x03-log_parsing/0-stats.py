@@ -22,8 +22,8 @@ try:
             print('File size: {:d}'.format(file_size))
             sort_key = sorted(stat_count.keys())
             for key in sort_key:
-                print('{}: {}'.format(key, stat_count[key]))\
-                    if stat_count[key] != 0 else ''
+                if stat_count[key] != 0:
+                    print('{}: {}'.format(key, stat_count[key]))
             count = 0
 except Exception:
     pass
@@ -31,5 +31,5 @@ finally:
     print('File size: {:d}'.format(file_size))
     sort_key = sorted(stat_count.keys())
     for key in sort_key:
-        print('{}: {}'.format(key, stat_count[key]))\
-            if stat_count[key] != 0 else ''
+        if stat_count[key] != 0:
+            print('{}: {}'.format(key, stat_count[key]))
