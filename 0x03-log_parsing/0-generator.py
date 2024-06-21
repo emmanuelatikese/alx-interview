@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 '''file to generate for stdin'''
 import random
 from time import sleep
