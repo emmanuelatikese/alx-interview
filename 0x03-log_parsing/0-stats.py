@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 '''here is where all the stat goes'''
 from sys import stdin
 
