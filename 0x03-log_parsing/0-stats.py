@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''here is where all the stat goes'''
-from sys import stdin
+import sys
 
 
 stat_count = {x: 0 for x in ['200', '301', '400', '401',
@@ -9,8 +9,8 @@ file_size = 0
 count = 0
 
 try:
-    for ins in stdin:
-        ln = ins.split(' ')
+    for line in sys.stdin:
+        ln = line.split(' ')
         if len(ln) > 2:
             stat_code = ln[-2]
             c_stat = ln[-1]
