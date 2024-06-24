@@ -24,7 +24,7 @@ try:
             for key in sort_key:
                 if stat_count[key] != 0:
                     print('{}: {}'.format(key, stat_count[key]))
-            count= 0
+            count = 0
 except Exception:
     pass
 finally:
