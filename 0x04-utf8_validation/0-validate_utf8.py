@@ -3,7 +3,7 @@
 from typing import List
 
 
-def validUTF8(data:List[int]) -> bool:
+def validUTF8(data: List[int]) -> bool:
     '''function begins here'''
     n = len(data)
     i = 0
