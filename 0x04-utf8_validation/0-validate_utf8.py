@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 '''this is utf-8 validation'''
+from typing import List
 
 
-def validUTF8(data):
+def validUTF8(data:List[int]) -> bool:
     '''function begins here'''
     n = len(data)
     i = 0
-
     while i < n:
         _byt = data[i]
         if _byt >> 7 == 0:
