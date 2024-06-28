@@ -5,7 +5,7 @@ import re
 
 def validUTF8(data):
     '''function validUTF8 begins here which does validation'''
-    bin_data = ['{0:08b}'.format(byte) for byte in data]
+    bin_data = ["{0:08b}".format(byte) for byte in data]
     str_bin = "".join(bin_data)
     _matching = re.compile(
         r'('
