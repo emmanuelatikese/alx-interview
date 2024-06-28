@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 '''this is utf-8 validation'''
-from typing import List
 import re
 
 
-def validUTF8(data: List[int]) -> bool:
-    '''function begins here'''
+def validUTF8(data):
+    '''function validutf-8 begins here'''
     bin_data = ['{0:08b}'.format(byte) for byte in data]
     str_bin = "".join(bin_data)
     _matching = re.compile(
