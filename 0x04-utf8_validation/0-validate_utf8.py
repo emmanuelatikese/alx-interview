@@ -16,4 +16,6 @@ def validUTF8(data):
         r')*'
     )
     res = _matching.fullmatch(str_bin)
-    return res is not None
+    if res is None:
+        return False
+    return True
