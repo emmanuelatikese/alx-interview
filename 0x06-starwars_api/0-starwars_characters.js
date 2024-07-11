@@ -7,7 +7,6 @@ request.get(url, (err, body) => {
     console.error(`Error: ${err}`);
     return;
   }
-
   const filmData = JSON.parse(body);
   const characters = filmData.characters;
   characters.foreach(x => {
