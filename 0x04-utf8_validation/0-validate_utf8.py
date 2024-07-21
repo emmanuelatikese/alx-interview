@@ -16,13 +16,16 @@ def validUTF8(data):
     i = 0
     while i < len(data):
         j = checking(data[i])
-        k = i + j + (j != 0)
-        i += 1
-        if j == 1 or j > 4 or k > len(data):
-            return False
-        while i < len(data) and i <= k:
-            cur = checking(data[i])
-            if cur != 1:
-                return False
+        if j == 0:
             i += 1
-        return True
+        elif j == 1 or j > 4:
+            return False
+        else:
+            k = i + j
+            if k > len(data):
+                return False
+            for x in range(i + 1, k):
+                if checking(data[x]) != 1:
+                    return False
+            i = k
+    return True
