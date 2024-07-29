@@ -1,21 +1,31 @@
 #!/usr/bin/python3
 '''this is utf-8 validation function file'''
-import re
 
 
 def validUTF8(data):
     '''function validUTF8 begins here which does validation'''
-    bin_data = ["{0:08b}".format(byte) for byte in data]
-    str_bin = "".join(bin_data)
-    _matching = re.compile(
-        r'('
-        r'0[01]{7}|'
-        r'110[01]{5}10[01]{6}|'
-        r'1110[01]{4}10[01]{6}10[01]{6}|'
-        r'11110[01]{3}10[01]{6}10[01]{6}10[01]{6}'
-        r')*'
-    )
-    res = _matching.fullmatch(str_bin)
-    if res is None:
-        return False
+    def checking(num):
+        '''comparing num to bytes
+        '''
+        mask = 1 << 7
+        count = 0
+        while num & mask:
+            mask >>= 1
+            count += 1
+        return count
+    i = 0
+    while i < len(data):
+        j = checking(data[i])
+        if j == 0:
+            i += 1
+        elif j == 1 or j > 4:
+            return False
+        else:
+            k = i + j
+            if k > len(data):
+                return False
+            for x in range(i + 1, k):
+                if checking(data[x]) != 1:
+                    return False
+            i = k
     return True
