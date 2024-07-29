@@ -5,7 +5,7 @@ from sys import argv
 
 def nqueen(n):
     '''this is where the algo starts'''
-    col = set()
+    col= set()
     posdiag = set()
     negdiag = set()
     res = []
