@@ -3,46 +3,48 @@
 from sys import argv
 
 
-def usage_exit(msg):
-    '''prints and exits'''
-    print(msg)
-    exit(1)
+def nqueen(n):
+    '''this is where the algo starts'''
+    col = set()
+    posdiag = set()
+    negdiag = set()
+    res = []
+    positions = []
 
+    def backtracking(r):
+        '''this is does the backtracking'''
+        if r == n:
+            res.append(positions[:])
+            return
+        for c in range(n):
+            if c in col or (r + c) in posdiag or (r - c) in negdiag:
+                continue
+            col.add(c)
+            posdiag.add(r + c)
+            negdiag.add(r - c)
+            positions.append([r, c])
+            backtracking(r + 1)
+            col.remove(c)
+            posdiag.remove(r + c)
+            negdiag.remove(r - c)
+            positions.pop()
 
-def _safe(b, rw, cl, N):
-    '''checks safety'''
-    for i in range(rw):
-        if b[i] == cl or \
-           b[i] - i == cl - rw or \
-           b[i] + i == cl + rw:
-            return False
-    return True
-
-
-def solve_nqueens(b, rw, N):
-    '''works on nqueens'''
-    if rw == N:
-        print([[i, b[i]] for i in range(N)])
-        return
-
-    for cl in range(N):
-        if _safe(b, rw, cl, N):
-            b[rw] = cl
-            solve_nqueens(b, rw + 1, N)
-            b[rw] = -1
+    backtracking(0)
+    return res
 
 
 if __name__ == "__main__":
     if len(argv) != 2:
-        usage_exit("Usage: nqueens N")
-
+        print("Usage: nqueens N")
+        exit(1)
     try:
-        N = int(argv[1])
+        n = int(argv[1])
+        if n < 4:
+            print("N must be at least 4")
+            exit(1)
+        solutions = nqueen(n)
+        for solution in solutions:
+            print(solution)
     except ValueError:
-        usage_exit("N must be a number")
-
-    if N < 4:
-        usage_exit("N must be at least 4")
-
-    b = [-1] * N
-    solve_nqueens(b, 0, N)
+        print("N must be an number")
+        exit(1)
